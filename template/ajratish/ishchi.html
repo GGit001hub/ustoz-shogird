@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for ishch in ishchi %}
+        <div class="row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+            <div class="card">
+                <div class="card-body">
+                <img height="220px" title="{{ishch.name}}"  src="{{ ishch.photo.url }}">
+                <h5 class="card-title">{{ ishch.name }}</h5>
+                <p class="card-text">"{{ishch.drift.title}}" kerak</p>
+                <p class="card-text">Murojat vaqti: {{ ishch.application_time }}</p>
+                <a href="{% url 'post_detail' ishch.slug %}" class="btn btn-primary">Batafsil bilish</a>
+                </div>
+            </div>
+            </div>
+        </div>
+    {% endfor %}
+    {% include "paginator.html" with page=ishchi %}
+{% endblock content%}

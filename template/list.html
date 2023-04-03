@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% for post in posts %}
+    <div style="margin: 0.5cm;" class="row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+          <div class="card">
+            <div class="card-body">
+              <img height="220px" title="{{post.name}}"  src="{{ post.photo.url }}">
+              <h5 class="card-title">{{ post.name }}</h5>
+              <p class="card-text">"{{post.drift.title}}" kerak</p>
+              <p class="card-text">Murojat vaqti: {{ post.application_time }}</p>
+              <a href="{% url 'post_detail' post.slug %}" class="btn btn-primary">Batafsil bilish</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    {% include "paginator.html" with page=posts %}
+{% endblock content %}
+
+
+      <!-- <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <img height="220px" src="{{ post.photo.url }}">
+            <h5 class="card-title">{{ post.name }}</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div> -->

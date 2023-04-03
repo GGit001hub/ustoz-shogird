@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for shr in sherig %}
+        <div class="row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+            <div class="card">
+                <div class="card-body">
+                <img height="220px" title="{{shr.name}}"  src="{{ shr.photo.url }}">
+                <h5 class="card-title">{{ shr.name }}</h5>
+                <p class="card-text">"{{shr.drift.title}}" kerak</p>
+                <p class="card-text">Murojat vaqti: {{ shr.application_time }}</p>
+                <a href="{% url 'post_detail' shr.slug %}" class="btn btn-primary">Batafsil bilish</a>
+                </div>
+            </div>
+            </div>
+        </div>
+    {% endfor %}
+    {% include "paginator.html" with page=sherig %}
+{% endblock content%}
